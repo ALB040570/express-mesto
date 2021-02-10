@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место</title>
+
+<link href="main.css" rel="stylesheet"></head>
+<body>
+  <div class="page">
+    <header class="header">
+      <img src="./images/logo.png" alt="Логотип" class="header__logo">
+    </header>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__grid">
+          <img src="./images/kusto.jpg" alt="Аватар" class="profile__avatar">
+          <img src="./images/editava.png" alt="Изменить" class="profile__avatar profile__avatar_edit">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <p class="profile__profession">Исследователь океана</p>
+          <button type="button" class="profile__button-edit"></button>
+        </div>
+        <button type="button" class="profile__button-add"></button>
+      </section>
+      <ul class="elements">
+      </ul>
+    </main>
+    <footer class="footer">
+      <p class="footer__text">&copy; 2020 Mesto Russia</p>
+    </footer>
+  </div>
+  <div class="popup" id="edit">
+    <div class="popup__grid">
+      <button type="button" class="popup__close"></button>
+      <form action=# name="info" class="popup__form" novalidate>
+        <fieldset class="popup__fieldset">
+          <legend class="popup__title">Редактировать профиль</legend>
+          <input placeholder="Введите имя" required class="popup__input" name = "popup-name" id="name"  minlength="2" maxlength="40">
+          <span class="popup__error" id="name-error"></span>
+          <input placeholder="Введите информацию о деятельности" required class="popup__input popup__input_type_description" name = "popup-profession" id="info" minlength="2" maxlength="200">
+          <span class="popup__error" id="info-error"></span>
+          <button type="submit" class="popup__button">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="popup" id="updata">
+    <div class="popup__grid">
+      <button type="button" class="popup__close"></button>
+      <form action=# name="avatar" class="popup__form" novalidate>
+        <fieldset class="popup__fieldset">
+          <legend class="popup__title">Обновить аватар</legend>
+          <input placeholder="Ссылка для картинки" required class="popup__input popup__input_type_description" name = "photo-link" id="link" type="url">
+          <span class="popup__error" id="link-error"></span>
+          <button type="submit" class="popup__button">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="popup" id="add">
+    <div class="popup__grid">
+      <button type="button" class="popup__close"></button>
+      <form action=# name="photo" id="photo" class="popup__form" novalidate>
+        <fieldset class="popup__fieldset">
+          <legend class="popup__title">Новое место</legend>
+          <input placeholder="Название" required class="popup__input" name = "photo-name" id="picture"  minlength="1" maxlength="30">
+          <span class="popup__error" id="picture-error"></span>
+          <input placeholder="Ссылка для картинки" required class="popup__input popup__input_type_description" name = "photo-link" id="link" type="url">
+          <span class="popup__error" id="link-error"></span>
+          <button type="submit" class="popup__button">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_view" id="view">
+    <div class="popup__grid">
+      <button type="button" class="popup__close"></button>
+      <div class="popup__form popup__form_view">
+        <figure class="popup__image-conteiner">
+          <img src="#" alt="" class="popup__image">
+          <figcaption class="popup__caption"></figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="popup" id="yes">
+    <div class="popup__grid">
+      <button type="button" class="popup__close"></button>
+      <form action=# name="confirmation" id="confirm" class="popup__form" novalidate>
+        <fieldset class="popup__fieldset">
+          <legend class="popup__title">Вы уверены?</legend>
+          <button type="submit" class="popup__button">Да</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <template id="template_element">
+    <li class="element">
+      <div class="element__bord"><img  alt="фото места" class="element__photo"></div>
+      <h2 class="element__title"></h2>
+      <div class="element__like-group">
+        <button type="button" class="element__like"></button>
+        <p class="element__like-counter">100</p>
+      </div>
+      <button type="button" class="element__trash"></button>
+    </li>
+  </template>
+  <!-- <script type="module" src="./pages/index.js"></script> -->
+<script src="main.js"></script></body>
+</html>
+

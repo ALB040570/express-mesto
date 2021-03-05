@@ -74,9 +74,28 @@ const addLike = (req, res) => {
       new: true,
     },
   )
+    .orFail(() => {
+      const err = new Error('Карточка с таким id не найдена');
+      err.statusCode = 404;
+      throw err;
+    })
     .populate(['likes', 'owner'])
     .then((card) => res.status(200).send({ data: card }))
-    .catch(() => res.status(500).send({ message: 'Ошибка сервера' }));
+    .catch((err) => {
+      if (err.kind === 'ObjectId') {
+        res
+          .status(400)
+          .send({ message: 'Не валидный ID карточки' });
+      } else
+      if (err.statusCode === 404) {
+        res
+          .status(404)
+          .send({ message: 'Карточка с таким ID не найдена' });
+      }
+      res
+        .status(500)
+        .send({ message: 'Ошибка сервера' });
+    });
 };
 
 const deleteLike = (req, res) => {
@@ -93,8 +112,27 @@ const deleteLike = (req, res) => {
       new: true,
     },
   )
+    .orFail(() => {
+      const err = new Error('Карточка с таким id не найдена');
+      err.statusCode = 404;
+      throw err;
+    })
     .then((card) => res.status(200).send({ data: card }))
-    .catch(() => res.status(500).send({ message: 'Ошибка сервера' }));
+    .catch((err) => {
+      if (err.kind === 'ObjectId') {
+        res
+          .status(400)
+          .send({ message: 'Не валидный ID карточки' });
+      } else
+      if (err.statusCode === 404) {
+        res
+          .status(404)
+          .send({ message: 'Карточка с таким ID не найдена' });
+      }
+      res
+        .status(500)
+        .send({ message: 'Ошибка сервера' });
+    });
 };
 
 module.exports = {
